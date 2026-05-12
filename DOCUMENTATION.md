@@ -80,7 +80,7 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: dataguru97/shared-test:latest
+          image: vel23/shared-test:latest
           ports:
             - containerPort: 5000
 
@@ -114,12 +114,12 @@ spec:
 You can **copy and paste it directly** into a file named `vars/gitCheckout.groovy`.
 
 ```groovy
-def call(String repoUrl, String branch, String credId) {
+def call(String repoUrl, String branch, String github-token) {
     echo "Checking out code from ${repoUrl}..."
     checkout([
         $class: 'GitSCM',
         branches: [[name: branch]],
-        userRemoteConfigs: [[credentialsId: credId, url: repoUrl]]
+        userRemoteConfigs: [[credentialsId: github-token, url: repoUrl]]
     ])
 }
 ```
@@ -127,12 +127,12 @@ def call(String repoUrl, String branch, String credId) {
 You can **copy and paste it directly** into a file named `vars/dockerBuildAndPush.groovy`.
 
 ```groovy
-def call(String imageName, String registryCredId) {
+def call(String imageName, String dockerhub-token) {
     echo "Building Docker image ${imageName}..."
     def dockerImage = docker.build("${imageName}:latest")
     
     echo "Pushing Docker image to DockerHub..."
-    docker.withRegistry('https://registry.hub.docker.com', registryCredId) {
+    docker.withRegistry('https://registry.hub.docker.com', dockerhub-token) {
         dockerImage.push('latest')
     }
 }
@@ -330,7 +330,7 @@ Minikube uses **Docker internally**, which is why Docker was installed first.
 
 ```bash
 minikube status
-minikubr kubectl get nodes
+minikube kubectl get nodes
 minikube kubectl cluster-info
 docker ps
 ```
@@ -505,7 +505,7 @@ Log in again once Jenkins restarts.
 
 1. Go to **[https://hub.docker.com](https://hub.docker.com)**
 2. Create a new repository
-   Example: `dataguru97/testing`
+   Example: `vel23`
 
 ---
 
@@ -527,7 +527,7 @@ Log in again once Jenkins restarts.
 2. Fill in the details:
 
    * **Kind:** Username with password
-   * **Username:** DockerHub username (e.g., `dataguru97`)
+   * **Username:** DockerHub username (e.g., `vel23`)
    * **Password:** DockerHub access token
    * **ID:** `dockerhub-token`
    * **Description:** `DockerHub Access Token`

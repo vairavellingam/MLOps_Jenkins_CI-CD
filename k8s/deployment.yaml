@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: # sudhanshu97699/jenkins-shared-lib:latest
+          image: vel23/mlops-jenkins-shared-library-project:latest
           ports:
             - containerPort: 5000
