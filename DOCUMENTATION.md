@@ -593,9 +593,9 @@ Copy the entire content of `.kube/config` for backup and editing.
 Run the following commands one by one:
 
 ```bash
-cat /home/gyrogodnon/.minikube/ca.crt | base64 -w 0; echo
-cat /home/gyrogodnon/.minikube/profiles/minikube/client.crt | base64 -w 0; echo
-cat /home/gyrogodnon/.minikube/profiles/minikube/client.key | base64 -w 0; echo
+cat /home/vairavellingam/.minikube/ca.crt | base64 -w 0; echo
+cat /home/vairavellingam/.minikube/profiles/minikube/client.crt | base64 -w 0; echo
+cat /home/vairavellingam/.minikube/profiles/minikube/client.key | base64 -w 0; echo
 ```
 
 
