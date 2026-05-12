@@ -15,5 +15,6 @@ spec:
       containers:
         - name: flask-container
           image: vel23/mlops-jenkins-shared-library-project:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
